@@ -1,5 +1,5 @@
 #! -*- coding: utf-8 -*-
-# 用全局归一化指针做中文命名实体识别
+# 用GlobalPointer做中文命名实体识别
 # 数据集 https://tianchi.aliyun.com/dataset/dataDetail?dataId=95414
 
 import json
@@ -159,7 +159,7 @@ class Evaluator(keras.callbacks.Callback):
         # 保存最优
         if f1 >= self.best_val_f1:
             self.best_val_f1 = f1
-            model.save_weights('./best_model.weights')
+            model.save_weights('./best_model_cmeee_globalpointer.weights')
         print(
             'valid:  f1: %.5f, precision: %.5f, recall: %.5f, best f1: %.5f\n' %
             (f1, precision, recall, self.best_val_f1)
@@ -197,10 +197,10 @@ if __name__ == '__main__':
         train_generator.forfit(),
         steps_per_epoch=len(train_generator),
         epochs=epochs,
-        callbacks=[evaluator],
+        callbacks=[evaluator]
     )
 
 else:
 
-    model.load_weights('./best_model.weights')
+    model.load_weights('./best_model_cmeee_globalpointer.weights')
     # predict_to_file('/root/ner/CMeEE/CMeEE_test.json', 'CMeEE_test.json')

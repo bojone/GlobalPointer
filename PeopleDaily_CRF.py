@@ -16,8 +16,8 @@ from tqdm import tqdm
 
 maxlen = 256
 epochs = 10
-batch_size = 32
-learning_rate = 2e-5  # bert_layers越小，学习率应该要越大
+batch_size = 16
+learning_rate = 2e-5
 crf_lr_multiplier = 1000  # 必要时扩大CRF层的学习率
 categories = set()
 
@@ -163,7 +163,7 @@ class Evaluator(keras.callbacks.Callback):
         # 保存最优
         if f1 >= self.best_val_f1:
             self.best_val_f1 = f1
-            model.save_weights('./best_model.weights')
+            model.save_weights('./best_model_peopledaily_crf.weights')
         print(
             'valid:  f1: %.5f, precision: %.5f, recall: %.5f, best f1: %.5f\n' %
             (f1, precision, recall, self.best_val_f1)
@@ -189,5 +189,5 @@ if __name__ == '__main__':
 
 else:
 
-    model.load_weights('./best_model.weights')
+    model.load_weights('./best_model_peopledaily_crf.weights')
     NER.trans = K.eval(CRF.trans)
