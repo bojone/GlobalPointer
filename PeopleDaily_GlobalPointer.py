@@ -1,7 +1,6 @@
 #! -*- coding: utf-8 -*-
 # 用全局归一化指针做中文命名实体识别
 # 数据集 http://s3.bmio.net/kashgari/china-people-daily-ner-corpus.tar.gz
-# 实测验证集的F1可以到96.18%，测试集的F1可以到95.35%
 
 import numpy as np
 from bert4keras.backend import keras, K
