@@ -7,6 +7,18 @@
 
 ## 效果
 
+### 人民日报NER
+
+| :-: | :-: | :-: | :-: | :-: |
+| | 验证集F1 | 测试集F1 | 训练速度 | 预测速度 |
+| CRF | 96.39% | 95.46% | 1x | 1x |
+| GlobalPointer (w/o RoPE) | 54.35% | 62.59% | 1.61x | 1.13x |
+| GlobalPointer (w/ RoPE) | 96.25% | 95.51% | 1.56x | 1.11x |
+
+### CLUENER
+
+### CMeEE
+
 ## 环境
 
 需要`bert4keras >= 0.10.6`。个人实验环境是tensorflow 1.14 + keras 2.3.1 + bert4keras 0.10.6。
